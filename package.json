@@ -1,0 +1,23 @@
+{
+  "name": "authentication-service",
+  "version": "1.0.0",
+  "description": "Node.js authentication service with JWT",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "npx nodemon src/server.js",
+    "create-admin": "node scripts/create-admin.js"
+  },
+  "author": "WMA",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.4",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-badge">A</div>
+      <div>
+        <p class="brand-name">AuthFlow Admin</p>
+        <p class="brand-tagline">Administrator control center</p>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button id="profileButton" class="button secondary icon-button">👤 Profile</button>
+      <button id="logoutButton" class="button secondary">Logout</button>
+    </div>
+  </header>
+
+  <main class="page-shell admin-shell">
+    <section class="page-header">
+      <div>
+        <p class="eyebrow">Admin tools</p>
+        <h1>Dashboard</h1>
+        <p class="page-copy">Review users, change roles, and manage account data from one place.</p>
+      </div>
+    </section>
+
+    <section class="grid-layout admin-grid">
+      <article class="card admin-panel">
+        <div class="card-title">
+          <h2>Manage users</h2>
+        </div>
+        <p class="card-copy">Load all user accounts and update their roles or remove them as needed.</p>
+        <button id="dashboardProfileButton" class="button secondary">View profile</button>
+        <button id="loadUsersButton" class="button">Load users</button>
+        <div id="usersTable" class="table-container hidden"></div>
+      </article>
+    </section>
+
+    <div id="message" class="message"></div>
+  </main>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

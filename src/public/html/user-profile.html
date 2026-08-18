@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-badge">A</div>
+      <div>
+        <p class="brand-name">AuthFlow</p>
+        <p class="brand-tagline">User profile</p>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button id="backButton" class="button secondary">Back</button>
+      <button id="logoutButton" class="button secondary">Logout</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-header">
+      <div>
+        <p class="eyebrow">Profile</p>
+        <h1>Your account details</h1>
+        <p class="page-copy">View and update your personal information here.</p>
+      </div>
+    </section>
+
+    <section class="grid-layout">
+      <article class="card profile-card">
+        <div class="card-title">
+          <h2>Profile overview</h2>
+        </div>
+        <div class="profile-data">
+          <div><span>Name</span><strong id="name"></strong></div>
+          <div><span>Email</span><strong id="email"></strong></div>
+          <div><span>Role</span><strong id="role"></strong></div>
+          <div><span>Address</span><strong id="address"></strong></div>
+          <div><span>Balance</span><strong id="balance"></strong></div>
+        </div>
+      </article>
+
+      <article class="card action-card">
+        <div class="card-title">
+          <h2>Edit profile</h2>
+        </div>
+        <p class="card-copy">Update your name and address whenever you need to keep your profile current.</p>
+        <div class="form">
+          <label for="nameInput">Name</label>
+          <input id="nameInput" type="text" />
+          <label for="addressInput">Address</label>
+          <input id="addressInput" type="text" />
+          <button id="saveButton" type="button" class="button">Save changes</button>
+        </div>
+      </article>
+    </section>
+
+    <div id="message" class="message"></div>
+  </main>
+
+  <script src="/js/user-profile.js"></script>
+</body>
+</html>

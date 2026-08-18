@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Homepage</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-badge">A</div>
+      <div>
+        <p class="brand-name">AuthFlow</p>
+        <p class="brand-tagline">Secure user portal</p>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button id="profileButton" class="button secondary icon-button">👤 Profile</button>
+      <button id="logoutButton" class="button secondary">Logout</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-header">
+      <div>
+        <p class="eyebrow">Welcome</p>
+        <h1>Your dashboard</h1>
+        <p class="page-copy">Manage your account details, update your profile, and stay secure.</p>
+      </div>
+    </section>
+
+    <section class="grid-layout">
+      <article class="card">
+        <div class="card-title">
+          <h2>Welcome to your dashboard</h2>
+        </div>
+        <p class="card-copy">Use the profile button above or the button below to view and update your account information.</p>
+        <button id="dashboardProfileButton" class="button">View profile</button>
+      </article>
+    </section>
+
+    <div id="message" class="message"></div>
+  </main>
+
+  <script src="/js/user.js"></script>
+</body>
+</html>
