@@ -1,9 +1,8 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
+    types: [closed]
     branches: [main]
 
 permissions:
@@ -11,7 +10,7 @@ permissions:
 
 jobs:
   bump-version:
-    if: github.ref == 'refs/heads/main'
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
       new_tag: ${{ steps.version.outputs.new_tag }}
@@ -25,14 +24,22 @@ jobs:
         id: version
         shell: bash
         run: |
-          latest=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+          latest=$(git tag --list '[0-9]*.[0-9]*' --sort=-version:refname | head -n 1)
 
           if [ -z "$latest" ]; then
-            new_tag="v1"
+            new_tag="1.0"
           else
-            current=${latest#v}
-            next=$((current + 1))
-            new_tag="v${next}"
+            major=${latest%%.*}
+            minor=${latest##*.}
+
+            if [ "$minor" = "9" ]; then
+              major=$((major + 1))
+              minor=0
+            else
+              minor=$((minor + 1))
+            fi
+
+            new_tag="${major}.${minor}"
           fi
 
           echo "new_tag=${new_tag}" >> "$GITHUB_OUTPUT"
@@ -100,5 +107,4 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/authentication-service:${{ needs.bump-version.outputs.new_tag }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/authentication-service:latest
 
