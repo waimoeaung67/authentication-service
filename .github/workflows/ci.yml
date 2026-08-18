@@ -1,8 +1,9 @@
 name: CI
 
 on:
+  push:
+    branches: [main]
   pull_request:
-    types: [closed]
     branches: [main]
 
 permissions:
@@ -10,7 +11,7 @@ permissions:
 
 jobs:
   bump-version:
-    if: github.event.pull_request.merged == true
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     outputs:
       new_tag: ${{ steps.version.outputs.new_tag }}
@@ -49,7 +50,7 @@ jobs:
           git push origin "$new_tag"
 
   build:
-    needs: bump-version
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -83,6 +84,7 @@ jobs:
   docker:
     name: Build and push Docker image
     needs: [build, bump-version]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
